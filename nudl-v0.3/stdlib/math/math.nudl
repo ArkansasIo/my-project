@@ -1,0 +1,20 @@
+// NUDL standard library proposal: math
+module nudl.math;
+
+const PI: Real;
+const TAU: Real;
+const E: Real;
+
+fn abs(value: Real) -> Real;
+fn min(left: Real, right: Real) -> Real;
+fn max(left: Real, right: Real) -> Real;
+fn clamp(value: Real, low: Real, high: Real) -> Real;
+fn lerp(start: Real, end: Real, amount: Real) -> Real;
+fn sqrt(value: Real) -> Result<Real, MathError>;
+fn pow(base: Real, exponent: Real) -> Result<Real, MathError>;
+fn sin(radians: Real) -> Real;
+fn cos(radians: Real) -> Real;
+fn floor(value: Real) -> Integer;
+fn ceil(value: Real) -> Integer;
+
+enum MathError { Domain, Overflow, DivideByZero }
