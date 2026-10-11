@@ -1,0 +1,20 @@
+{
+  "name": "NexaForge Internet Data Package Test",
+  "format": "NDF draft",
+  "fixture": "internet_data_package.ndf",
+  "record_count": 4,
+  "test_categories": [
+    "baseline GET",
+    "not-found expectation",
+    "JSON POST echo",
+    "response header/content-type"
+  ],
+  "network_execution": false,
+  "safety_defaults": {
+    "credentials_included": false,
+    "destructive_methods_used": false,
+    "timeout_required": true,
+    "host_allowlist_recommended": true
+  },
+  "compatibility_note": "This fixture uses the original NDF draft syntax and requires an NDF parser or adapter; it is not directly parsed by the separate MDF 0.1 compiler."
+}
