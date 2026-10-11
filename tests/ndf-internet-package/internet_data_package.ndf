@@ -1,0 +1,56 @@
+NEXADATA 1.0
+FORMAT Nexa Data Format
+PROJECT "NexaForge Internet Data Package Test"
+DATASET internet_requests
+ENCODING UTF-8
+DESCRIPTION "Synthetic test fixture for describing HTTP-style internet data exchanges. No real network requests are executed by this file."
+
+[SCHEMA]
+case_id           : STRING(32) REQUIRED PRIMARY_KEY
+protocol          : ENUM("HTTP","HTTPS") REQUIRED
+method            : ENUM("GET","POST","PUT","DELETE") REQUIRED
+host              : STRING(253) REQUIRED
+path              : STRING(2048) REQUIRED
+content_type      : STRING(128) OPTIONAL
+expected_status   : UINT16 REQUIRED
+expected_mime     : STRING(128) OPTIONAL
+timeout_ms        : UINT32 REQUIRED
+follow_redirects  : UINT8 REQUIRED DEFAULT(0)
+expected_contains : STRING(255) OPTIONAL
+description       : STRING(255) OPTIONAL
+
+[RECORDS]
+case_id="HTTP-GET-001" | protocol="HTTPS" | method="GET" | host="example.com" | path="/" | content_type="text/html" | expected_status=200 | expected_mime="text/html" | timeout_ms=5000 | follow_redirects=1 | expected_contains="Example Domain" | description="Baseline GET request against the reserved example.com domain."
+case_id="HTTP-GET-002" | protocol="HTTPS" | method="GET" | host="example.com" | path="/nonexistent-nexaforge-test-path" | expected_status=404 | timeout_ms=5000 | follow_redirects=0 | description="Illustrative not-found test; response behavior may change and must be asserted only when run."
+case_id="HTTP-POST-001" | protocol="HTTPS" | method="POST" | host="httpbin.org" | path="/post" | content_type="application/json" | expected_status=200 | expected_mime="application/json" | timeout_ms=7000 | follow_redirects=0 | expected_contains="json" | description="Optional external echo-service test; network availability and policy may vary."
+case_id="HTTP-HEADER-001" | protocol="HTTPS" | method="GET" | host="example.com" | path="/" | expected_status=200 | expected_mime="text/html" | timeout_ms=5000 | follow_redirects=1 | description="Test response status, content type, and response-header capture."
+
+[VALIDATION]
+RULE unique(case_id)
+RULE timeout_ms >= 1
+RULE expected_status >= 100
+RULE expected_status <= 599
+RULE follow_redirects in range 0..1
+NOTE "The schema defines test cases; it does not run network requests."
+NOTE "The HTTP-GET-002 status is an expectation to verify at runtime, not a guaranteed live result."
+
+[STORAGE]
+DATABASE "nexaforge_net_tests"
+TABLE "internet_request_cases"
+PRIMARY_KEY "case_id"
+
+[EXPORT]
+JSON "internet_data_package.json"
+CSV "internet_data_package.csv"
+MYSQL "internet_data_package.sql"
+REPORT "internet_data_package_results.json"
+
+[THEME]
+background = "#0a101a"
+panel = "#111c2b"
+accent = "#53c7e8"
+success = "#73d6a1"
+warning = "#f2c879"
+danger = "#ff7f88"
+
+[END]
