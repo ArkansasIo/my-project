@@ -1,0 +1,28 @@
+// Design example — syntax is proposed, not accepted by compiler 0.3.
+module examples.nested_types;
+
+struct Attribute {
+    key: String;
+    value: Float64;
+}
+
+struct Item {
+    id: UInt64;
+    name: String;
+    rarity: Rarity;
+    attributes: Array<Attribute>;
+    tags: Set<String>;
+    metadata: Map<String, PropertyValue>;
+}
+
+struct Inventory {
+    owner_id: UInt64;
+    slots: Array<Option<Item>>;
+    capacity: UInt32;
+}
+
+let empty_inventory: Inventory = Inventory {
+    owner_id: 1,
+    slots: [],
+    capacity: 40
+};
