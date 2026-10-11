@@ -1,0 +1,24 @@
+// NUDL standard library proposal: native data model
+module nudl.data;
+
+type FieldDefinition = {
+    name: String,
+    type_name: String,
+    required: Boolean
+};
+
+type SchemaDefinition = {
+    name: String,
+    fields: Array<FieldDefinition>
+};
+
+type ValidationIssue = {
+    path: String,
+    code: String,
+    message: String
+};
+
+fn validate(schema: SchemaDefinition, record: Record) -> Array<ValidationIssue>;
+fn field_names(schema: SchemaDefinition) -> Array<String>;
+
+// Dataset/table query semantics and storage format require a normative specification.
