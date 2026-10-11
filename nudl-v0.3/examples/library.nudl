@@ -1,0 +1,20 @@
+NUDL 0.3
+
+LIBRARY nudl.math VERSION 0.1.0
+DESCRIPTION "Proposed native mathematics library API."
+
+EXPORT FUNCTION clamp(value: Float64, minimum: Float64, maximum: Float64) -> Float64
+  REQUIRE minimum <= maximum
+  RETURN IF value < minimum THEN minimum
+         ELSE IF value > maximum THEN maximum
+         ELSE value
+END
+
+EXPORT FUNCTION lerp(start: Float64, finish: Float64, amount: Float64) -> Float64
+  REQUIRE amount >= 0.0 AND amount <= 1.0
+  RETURN start + (finish - start) * amount
+END
+
+EXPORT FUNCTION square(value: Float64) -> Float64
+  RETURN value * value
+END
