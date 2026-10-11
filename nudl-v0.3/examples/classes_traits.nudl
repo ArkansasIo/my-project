@@ -1,0 +1,34 @@
+// Design example — syntax is proposed, not accepted by compiler 0.3.
+module examples.classes_traits;
+
+trait Identifiable {
+    fn get_id(self) -> UInt64;
+}
+
+trait Tickable {
+    fn tick(self, delta_seconds: Float64) -> Unit;
+}
+
+class Actor {
+    private id: UInt64;
+    private active: Boolean;
+
+    init(id: UInt64) {
+        self.id = id;
+        self.active = true;
+    }
+
+    pub fn get_id(self) -> UInt64 {
+        return self.id;
+    }
+
+    pub fn is_active(self) -> Boolean {
+        return self.active;
+    }
+}
+
+impl Identifiable for Actor {
+    fn get_id(self) -> UInt64 {
+        return self.id;
+    }
+}
