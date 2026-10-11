@@ -37,3 +37,25 @@ The block above illustrates the intended future source syntax. The current exper
 - Floating-point arithmetic uses C++ `double`; exact decimal arithmetic is not implemented.
 
 See `spec/NUDL-0003.md` and `grammar/NUDL-0.3.ebnf`.
+
+
+## Expanded language design
+
+The repository now includes a draft grammar and broad language design for the next version:
+
+- [NUDL 0004 specification](spec/NUDL-0004.md)
+- [Proposed 0.4 EBNF grammar](grammar/NUDL-0.4.ebnf)
+- [Syntax catalog](docs/SYNTAX_CATALOG.md)
+- [Language reference](docs/LANGUAGE_REFERENCE.md)
+- [Type system](docs/TYPE_SYSTEM.md)
+- [Modules and packages](docs/MODULE_SYSTEM.md)
+- [AST design](docs/AST_DESIGN.md)
+- [Arrays and collections](docs/ARRAYS_AND_COLLECTIONS.md)
+- [Runtime and memory](docs/MEMORY_AND_RUNTIME.md)
+- [Error model](docs/ERROR_MODEL.md)
+- [Annotations and attributes](docs/ANNOTATIONS_AND_ATTRIBUTES.md)
+- [Implementation status](docs/IMPLEMENTATION_STATUS.md)
+- [Expanded examples](examples/README.md)
+- [Standard-library proposals](stdlib/README.md)
+
+These documents specify intended syntax and behavior. Compiler 0.3 still implements arithmetic expression evaluation only; the complete module language, type system, classes, collections, and standard library require implementation and tests.
