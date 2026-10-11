@@ -1,0 +1,10 @@
+(* NUDL 0.3 experimental arithmetic expression grammar *)
+expression  = term, { ("+" | "-"), term } ;
+term        = unary, { ("*" | "/"), unary } ;
+unary       = ("+" | "-"), unary | primary ;
+primary     = number | "(", expression, ")" ;
+number      = digits, [".", digits], [exponent]
+            | ".", digits, [exponent] ;
+exponent    = ("e" | "E"), ["+" | "-"], digits ;
+digits      = digit, { digit } ;
+digit       = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
