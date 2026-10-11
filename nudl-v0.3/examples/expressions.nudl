@@ -1,0 +1,14 @@
+NUDL 0.3
+
+(* These examples show the intended numeric expression notation. *)
+EXPRESSION "basic_precedence"
+  VALUE 2 + 3 * 4
+END
+
+EXPRESSION "parentheses"
+  VALUE (2 + 3) * 4
+END
+
+EXPRESSION "scientific_notation"
+  VALUE 1.5e2 / 3
+END
