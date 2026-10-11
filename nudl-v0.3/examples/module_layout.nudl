@@ -1,0 +1,28 @@
+// Design example — syntax is proposed, not accepted by compiler 0.3.
+// Suggested logical package layout:
+// game
+//   core
+//     entity.nudl
+//     identity.nudl
+//   world
+//     transform.nudl
+//     spatial_index.nudl
+//   combat
+//     damage.nudl
+//     abilities.nudl
+//   data
+//     schemas.nudl
+//     validation.nudl
+//   ui
+//     theme.nudl
+//     widgets.nudl
+
+module examples.game_entry;
+
+import game.core.entity as entity;
+import game.world.transform as transform;
+import game.combat.damage as damage;
+
+pub const GAME_NAME: String = "NUDL Sample World";
+
+// Module imports are illustrative until module resolution is implemented.
