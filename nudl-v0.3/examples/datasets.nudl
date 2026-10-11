@@ -1,0 +1,27 @@
+NUDL 0.3
+
+DATASET CreatureCatalog VERSION 1
+DESCRIPTION "Example native typed dataset for a game creature catalog."
+
+SCHEMA Creature
+  id          : UInt64 REQUIRED UNIQUE
+  name        : Text REQUIRED
+  species     : Text REQUIRED
+  level       : UInt16 REQUIRED RANGE 1..100
+  health      : Float64 REQUIRED MIN 0
+  hostile     : Boolean REQUIRED
+  tags        : List<Text> DEFAULT []
+END
+
+RECORDS Creature
+  { id: 1001, name: "Cinder Fox", species: "beast", level: 8, health: 125.0, hostile: false, tags: ["fire", "forest"] }
+  { id: 1002, name: "Basalt Golem", species: "construct", level: 24, health: 1800.0, hostile: true, tags: ["stone", "guardian"] }
+  { id: 1003, name: "Moonwing", species: "avian", level: 17, health: 460.0, hostile: false, tags: ["night", "rare"] }
+END
+
+QUERY "high_level_hostiles"
+  FROM Creature
+  WHERE hostile == true AND level >= 20
+  SELECT id, name, level, health
+  ORDER BY level DESC
+END
