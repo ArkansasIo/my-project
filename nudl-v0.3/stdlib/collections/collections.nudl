@@ -1,0 +1,15 @@
+// NUDL standard library proposal: collections
+module nudl.collections;
+
+type Array<T>;
+type Map<K, V>;
+type Set<T>;
+
+fn count<T>(values: Array<T>) -> Integer;
+fn contains<T>(values: Array<T>, item: T) -> Boolean;
+fn first<T>(values: Array<T>) -> Option<T>;
+fn last<T>(values: Array<T>) -> Option<T>;
+fn reverse<T>(values: Array<T>) -> Array<T>;
+fn unique<T>(values: Array<T>) -> Array<T>;
+fn keys<K, V>(value: Map<K, V>) -> Array<K>;
+fn values<K, V>(value: Map<K, V>) -> Array<V>;
