@@ -1,0 +1,19 @@
+// NUDL standard library proposal: core
+module nudl.core;
+
+type Result<T, E> = Success(T) | Failure(E);
+type Option<T> = Some(T) | None;
+
+enum ErrorKind {
+    InvalidArgument,
+    InvalidType,
+    OutOfRange,
+    NotFound,
+    PermissionDenied,
+    ResourceLimit,
+    Internal
+}
+
+// Proposed APIs; not executable in compiler 0.3.
+fn is_success<T, E>(value: Result<T, E>) -> Boolean;
+fn is_some<T>(value: Option<T>) -> Boolean;
