@@ -1,0 +1,19 @@
+// NUDL standard library proposal: time
+module nudl.time;
+
+type Instant;
+type LocalDate;
+type LocalTime;
+type DateTime;
+type TimeZone;
+type Duration;
+
+fn now() -> Instant;
+fn add_duration(value: Instant, amount: Duration) -> Instant;
+fn difference(later: Instant, earlier: Instant) -> Duration;
+fn parse_instant(value: String) -> Result<Instant, TimeError>;
+fn format_instant(value: Instant) -> String;
+
+enum TimeError { InvalidFormat, OutOfRange, UnknownTimeZone }
+
+// Clock source, leap-second policy, calendar system, and timezone database are unresolved.
