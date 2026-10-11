@@ -1,0 +1,26 @@
+// Design example — syntax is proposed, not accepted by compiler 0.3.
+module examples.functions_generics;
+
+pub fn identity<T>(value: T) -> T {
+    return value;
+}
+
+pub fn first<T>(values: Array<T>) -> Option<T> {
+    if values.length() == 0 {
+        return none;
+    }
+    return some(values[0]);
+}
+
+pub fn clamp(value: Float64, low: Float64, high: Float64) -> Float64 {
+    if value < low { return low; }
+    if value > high { return high; }
+    return value;
+}
+
+pub fn try_divide(numerator: Float64, denominator: Float64) -> Result<Float64, MathError> {
+    if denominator == 0.0 {
+        return Failure(MathError.DivideByZero);
+    }
+    return Success(numerator / denominator);
+}
