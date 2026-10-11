@@ -1,0 +1,31 @@
+NUDL 0.3
+
+THEME CommandConsole VERSION 1
+  COLOR background = #0A101A
+  COLOR panel      = #111C2B
+  COLOR text       = #E6EDF5
+  COLOR accent     = #53C7E8
+  COLOR success    = #73D6A1
+  COLOR warning    = #F2C879
+  COLOR danger     = #FF7F88
+
+  TYPOGRAPHY body
+    FAMILY "Nudl Sans"
+    SIZE 14pt
+    WEIGHT 400
+  END
+
+  TYPOGRAPHY heading
+    FAMILY "Nudl Sans"
+    SIZE 22pt
+    WEIGHT 650
+  END
+
+  COMPONENT DataPanel
+    FILL theme.panel
+    TEXT theme.text
+    BORDER 1px theme.accent
+    RADIUS 8px
+    PADDING 16px
+  END
+END
