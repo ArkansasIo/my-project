@@ -1,0 +1,25 @@
+name: NUDL C++ CI
+
+on:
+  push:
+    paths:
+      - "nudl-v0.3/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    paths:
+      - "nudl-v0.3/**"
+      - ".github/workflows/ci.yml"
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S nudl-v0.3 -B nudl-v0.3/build -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build nudl-v0.3/build --parallel 2
+      - name: Test
+        run: ctest --test-dir nudl-v0.3/build --output-on-failure
