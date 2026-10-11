@@ -1,0 +1,12 @@
+// NUDL standard library proposal: statistics
+module nudl.statistics;
+
+fn sum(values: Array<Real>) -> Real;
+fn mean(values: Array<Real>) -> Option<Real>;
+fn median(values: Array<Real>) -> Option<Real>;
+fn variance(values: Array<Real>) -> Option<Real>;
+fn standard_deviation(values: Array<Real>) -> Option<Real>;
+fn minimum(values: Array<Real>) -> Option<Real>;
+fn maximum(values: Array<Real>) -> Option<Real>;
+
+// Population versus sample variance and floating-point policy need specification.
