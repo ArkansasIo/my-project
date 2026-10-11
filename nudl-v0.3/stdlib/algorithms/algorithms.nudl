@@ -1,0 +1,10 @@
+// NUDL standard library proposal: algorithms
+module nudl.algorithms;
+
+fn binary_search<T: Ordered>(values: Array<T>, target: T) -> Option<Integer>;
+fn sorted<T: Ordered>(values: Array<T>) -> Array<T>;
+fn lower_bound<T: Ordered>(values: Array<T>, target: T) -> Integer;
+fn upper_bound<T: Ordered>(values: Array<T>, target: T) -> Integer;
+fn fibonacci(index: Integer) -> Result<Integer, SequenceError>;
+
+enum SequenceError { NegativeIndex, Overflow }
