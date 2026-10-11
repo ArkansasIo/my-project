@@ -1,0 +1,19 @@
+NUDL 0.3
+
+DATASET PlayerProfiles VERSION 1
+
+SCHEMA Player
+  player_id : UInt64 REQUIRED UNIQUE
+  handle    : Text REQUIRED LENGTH 3..24
+  level     : UInt16 REQUIRED RANGE 1..100
+  hp        : Float64 REQUIRED MIN 0
+  max_hp    : Float64 REQUIRED MIN 1
+  email     : Text OPTIONAL
+END
+
+VALIDATE Player
+  RULE handle_matches "^[A-Za-z0-9_]+$"
+  RULE hp_not_above_max ASSERT hp <= max_hp
+  RULE level_in_game_range ASSERT level >= 1 AND level <= 100
+  RULE email_nonempty_when_present ASSERT email IS NULL OR LENGTH(email) > 0
+END
