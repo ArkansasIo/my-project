@@ -1,6 +1,6 @@
 # NUDL Standard Library — Proposal
 
-This directory defines planned native NUDL APIs. These declarations are specifications-in-progress, not executable modules in compiler 0.3.
+These files specify intended native NUDL APIs; they are not executable library modules in compiler 0.3.
 
 - core/ — primitive types, errors, option/result values.
 - math/ — numeric operations and constants.
@@ -9,6 +9,9 @@ This directory defines planned native NUDL APIs. These declarations are specific
 - data/ — schemas, records, datasets, tables.
 - algorithms/ — search, sorting, sequence utilities.
 - statistics/ — descriptive statistics.
-- system/ — capability-gated host services.
+- time/ — instants, dates, durations, time zones.
+- io/ — capability-gated file and byte operations.
+- network/ — capability-gated networking.
+- system/ — runtime information and host capabilities.
 
-API signatures remain subject to the language specification and conformance tests.
+API signatures remain subject to the language specification and conformance tests. No API should be described as implemented until it has runtime/compiler support and automated tests.
