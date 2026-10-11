@@ -1,0 +1,14 @@
+// NUDL standard library proposal: capability-gated I/O
+module nudl.io;
+
+type FileHandle;
+type Path;
+type IoError = NotFound | PermissionDenied | InvalidPath | DeviceFailure;
+
+fn read_text(path: Path) -> Result<String, IoError>;
+fn write_text(path: Path, content: String) -> Result<Unit, IoError>;
+fn read_bytes(path: Path) -> Result<Bytes, IoError>;
+fn write_bytes(path: Path, content: Bytes) -> Result<Unit, IoError>;
+
+// All file operations require a FileRead or FileWrite capability.
+// These APIs are not implemented in compiler 0.3.
