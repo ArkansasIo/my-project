@@ -1,0 +1,13 @@
+// NUDL standard library proposal: capability-gated networking
+module nudl.network;
+
+type Endpoint;
+type Request;
+type Response;
+type NetworkError;
+
+fn parse_endpoint(value: String) -> Result<Endpoint, NetworkError>;
+fn send(request: Request) -> Result<Response, NetworkError>;
+
+// Networking requires an explicit Network capability, bounded timeouts, response-size limits,
+// and transport policy. This module is a proposal and has no implementation in compiler 0.3.
