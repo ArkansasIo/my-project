@@ -1,0 +1,21 @@
+// Design example — syntax is proposed, not accepted by compiler 0.3.
+module examples.arrays_collections;
+
+let scores: Array<Int32> = [10, 20, 30, 40];
+let grid: Array<Array<Float64>> = [
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0]
+];
+
+let point: (Float64, Float64) = (12.5, -4.0);
+let maybe_score: Option<Int32> = some(99);
+let lookup: Map<String, Int32> = Map {};
+let tags: Set<String> = Set {};
+
+fn sum(values: Array<Int32>) -> Int64 {
+    var total: Int64 = 0;
+    for value in values {
+        total = total + value;
+    }
+    return total;
+}
