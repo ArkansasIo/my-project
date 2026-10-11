@@ -1,0 +1,24 @@
+NUDL 0.3
+
+DATASET RPGInventory VERSION 1
+
+TABLE Item
+  FIELD item_id     : UInt64 REQUIRED PRIMARY KEY
+  FIELD item_name   : Text REQUIRED
+  FIELD rarity      : Enum<Common,Uncommon,Rare,Epic,Legendary> REQUIRED
+  FIELD stack_limit : UInt32 REQUIRED MIN 1
+END
+
+TABLE InventorySlot
+  FIELD slot_id   : UInt64 REQUIRED PRIMARY KEY
+  FIELD owner_id  : UInt64 REQUIRED
+  FIELD item_id   : UInt64 REQUIRED REFERENCES Item(item_id)
+  FIELD quantity  : UInt32 REQUIRED MIN 1
+  CONSTRAINT quantity_within_limit
+    ASSERT quantity <= LOOKUP Item.stack_limit WHERE Item.item_id == item_id
+END
+
+RELATIONSHIP InventorySlot.item_id -> Item.item_id
+  CARDINALITY MANY_TO_ONE
+  ON_DELETE RESTRICT
+END
