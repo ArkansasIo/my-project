@@ -1,0 +1,36 @@
+NUDL 0.3
+
+MODULE AlgorithmsExamples
+
+FUNCTION fibonacci(n: UInt32) -> UInt64
+  REQUIRE n <= 92
+  IF n <= 1 THEN
+    RETURN n
+  END
+
+  LET previous : UInt64 = 0
+  LET current  : UInt64 = 1
+  FOR index IN 2..n
+    LET next : UInt64 = previous + current
+    SET previous = current
+    SET current = next
+  END
+  RETURN current
+END
+
+FUNCTION binary_search(values: List<Int64>, target: Int64) -> Optional<UInt64>
+  LET low : Int64 = 0
+  LET high : Int64 = LENGTH(values) - 1
+
+  WHILE low <= high
+    LET middle : Int64 = low + (high - low) / 2
+    IF values[middle] == target THEN
+      RETURN SOME(middle)
+    ELSE IF values[middle] < target THEN
+      SET low = middle + 1
+    ELSE
+      SET high = middle - 1
+    END
+  END
+  RETURN NONE
+END
