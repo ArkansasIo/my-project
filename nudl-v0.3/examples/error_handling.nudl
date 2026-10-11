@@ -1,0 +1,23 @@
+// Design example — syntax is proposed, not accepted by compiler 0.3.
+module examples.error_handling;
+
+enum ParseError {
+    EmptyInput,
+    InvalidNumber,
+    OutOfRange
+}
+
+fn parse_level(text: String) -> Result<Int32, ParseError> {
+    if text.length() == 0 {
+        return Failure(ParseError.EmptyInput);
+    }
+    // The conversion API is a future standard-library contract.
+    return parse_int32(text);
+}
+
+fn safe_level(text: String) -> Int32 {
+    match parse_level(text) {
+        Success(level) => return level;
+        Failure(_) => return 1;
+    }
+}
