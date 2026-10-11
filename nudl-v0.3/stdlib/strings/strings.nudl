@@ -1,0 +1,13 @@
+// NUDL standard library proposal: strings
+module nudl.strings;
+
+fn length(value: String) -> Integer;
+fn is_empty(value: String) -> Boolean;
+fn contains(value: String, fragment: String) -> Boolean;
+fn starts_with(value: String, prefix: String) -> Boolean;
+fn ends_with(value: String, suffix: String) -> Boolean;
+fn trim(value: String) -> String;
+fn split(value: String, separator: String) -> Array<String>;
+fn join(parts: Array<String>, separator: String) -> String;
+
+// String indexing and length semantics must be specified in Unicode terms.
