@@ -1,0 +1,32 @@
+// Design example — syntax is proposed, not accepted by compiler 0.3.
+module examples.control_flow;
+
+fn classify(value: Int32) -> String {
+    if value < 0 {
+        return "negative";
+    } else if value == 0 {
+        return "zero";
+    } else {
+        return "positive";
+    }
+}
+
+fn sum_until(limit: Int32) -> Int64 {
+    var total: Int64 = 0;
+    for value in 0..limit {
+        if value == 5 {
+            continue;
+        }
+        total = total + value;
+    }
+    return total;
+}
+
+fn describe_rarity(rarity: Rarity) -> String {
+    match rarity {
+        Common => return "common";
+        Rare => return "rare";
+        Mythic => return "mythic";
+        _ => return "other";
+    }
+}
