@@ -1,0 +1,15 @@
+// NUDL standard library proposal: capability-gated system APIs
+module nudl.system;
+
+type Capability = FileRead | FileWrite | Network | Process | Hardware;
+type RuntimeInfo = {
+    compiler_version: String,
+    language_version: String,
+    platform: String
+};
+
+fn runtime_info() -> RuntimeInfo;
+fn has_capability(capability: Capability) -> Boolean;
+
+// File, network, process, GPU, and hardware calls require explicit capabilities.
+// No system APIs are implemented by compiler 0.3.
