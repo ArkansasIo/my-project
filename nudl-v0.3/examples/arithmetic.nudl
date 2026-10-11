@@ -1,0 +1,23 @@
+NUDL 0.3
+
+MODULE ArithmeticExamples
+
+CONSTANT gravity_m_s2 : Float64 = 9.80665
+CONSTANT base_damage : Float64 = 120.0
+CONSTANT bonus_damage : Float64 = 35.0
+CONSTANT damage_multiplier : Float64 = 1.25
+
+EXPRESSION "total_damage"
+  VALUE (base_damage + bonus_damage) * damage_multiplier
+  EXPECT 193.75
+END
+
+EXPRESSION "distance_after_one_second"
+  VALUE 0.5 * gravity_m_s2 * 1.0 * 1.0
+  EXPECT 4.903325
+END
+
+EXPRESSION "operator_precedence"
+  VALUE 2 + 3 * 4
+  EXPECT 14
+END
