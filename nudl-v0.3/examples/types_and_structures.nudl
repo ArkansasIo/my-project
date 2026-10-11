@@ -1,0 +1,34 @@
+// Design example — syntax is proposed, not accepted by compiler 0.3.
+module examples.types_and_structures;
+
+type EntityId = UInt64;
+
+struct Vec3 {
+    x: Float64;
+    y: Float64;
+    z: Float64;
+}
+
+struct Transform {
+    position: Vec3;
+    rotation: Vec3;
+    scale: Vec3;
+}
+
+enum Rarity {
+    Common,
+    Uncommon,
+    Rare,
+    Epic,
+    Legendary,
+    Mythic
+}
+
+union PropertyValue {
+    IntegerValue(Int64),
+    RealValue(Float64),
+    TextValue(String),
+    FlagValue(Boolean)
+}
+
+let origin: Vec3 = Vec3 { x: 0.0, y: 0.0, z: 0.0 };
